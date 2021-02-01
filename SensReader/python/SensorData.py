@@ -93,7 +93,7 @@ class SensorData:
     for f in range(0, len(self.frames), frame_skip):
       color = self.frames[f].decompress_color(self.color_compression_type)
       if image_size is not None:
-        color = cv2.resize(color, (image_size[1], image_size[0]), interpolation=cv2.INTER_NEAREST)
+        color = cv2.resize(color, (image_size[0], image_size[1]), interpolation=cv2.INTER_NEAREST)
       imageio.imwrite(os.path.join(output_path, str(f) + '.jpg'), color)
 
 

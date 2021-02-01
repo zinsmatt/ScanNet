@@ -25,10 +25,12 @@ def main():
   sys.stdout.write('loading %s...' % opt.filename)
   sd = SensorData(opt.filename)
   sys.stdout.write('loaded!\n')
+  name = os.path.splitext(os.path.basename(opt.filename))[0]
   if opt.export_depth_images:
     sd.export_depth_images(os.path.join(opt.output_path, 'depth'))
   if opt.export_color_images:
-    sd.export_color_images(os.path.join(opt.output_path, 'color'))
+    # sd.export_color_images(os.path.join(opt.output_path, name), image_size=(130, 95), frame_skip=1)
+    sd.export_color_images(os.path.join(opt.output_path, name), frame_skip=1)
   if opt.export_poses:
     sd.export_poses(os.path.join(opt.output_path, 'pose'))
   if opt.export_intrinsics:
